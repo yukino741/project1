@@ -1,0 +1,63 @@
+{
+    "pages": [
+      "pages/onLoad/onLoad",
+      "pages/index/index",
+      "pages/creat/creat",
+      "pages/Massage/Massage",
+      "pages/other/other",
+      "pages/userProfile/userProfile",
+      "pages/input/input",
+      "pages/detail/detail",
+      "pages/111/111",
+      "pages/searchResult/searchResult"
+    ],
+    "window": {
+      "navigationBarTextStyle": "white",
+      "navigationBarTitleText": "邮的食",
+      "navigationBarBackgroundColor": "#00BBFF"
+    },
+    "tabBar": {
+      "position": "bottom",
+      "borderStyle": "black",
+      "custom": false,
+      "backgroundColor": "#FFFFFF",
+      "color": "#000000",
+      "selectedColor": "#00BBFF",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "首页",
+          "iconPath": "images/首页_home.png",
+          "selectedIconPath": "images/首页_homeS.png"
+        },
+        {
+          "pagePath": "pages/Massage/Massage",
+          "text": "超市商品",
+          "iconPath": "images/商店_shop.png",
+          "selectedIconPath": "images/商店_shops.png"
+        },
+        {
+          "pagePath": "pages/creat/creat",
+          "text": "创作",
+          "iconPath": "images/添加_add-one.png",
+          "selectedIconPath": "images/添加_add-oneS.png"
+        },
+        {
+          "pagePath": "pages/other/other",
+          "text": "小工具",
+          "iconPath": "images/工具箱_toolkit.png",
+          "selectedIconPath": "images/工具箱_toolkits.png"
+        },
+        {
+          "pagePath": "pages/userProfile/userProfile",
+          "text": "我的",
+          "iconPath": "images/访达_mac-finder.png",
+          "selectedIconPath": "images/访达_mac-finderS.png"
+        }
+      ]
+    },
+    "style": "v2",
+    "componentFramework": "glass-easel",
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents"
+  }

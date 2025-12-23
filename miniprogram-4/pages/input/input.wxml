@@ -1,0 +1,54 @@
+<view class="container">
+  <!-- 登录区域：如果没有 userInfo 则显示登录按钮，已登录则显示当前用户昵称 -->
+  <block wx:if="{{!userInfo}}">
+    <button type="primary" bindtap="login" class="login-btn">点击登录并获取昵称</button>
+  </block>
+  <block wx:else>
+    <view class="current-user">当前用户: {{userInfo.loginUser}}</view>
+  </block>
+
+<text class="shuoming">请依据您的口味口味偏好从none到A进行选择（none：这啥啊离我远点 A：没有你的人生就算结束了也无所谓吧）</text>
+  <form bindsubmit="submitForm">
+    <!-- 能力值输入 (A-E级评定) -->
+    <view class="stats-group">
+      <view class="stat-item">
+        <text>酸味</text>
+        <picker mode="selector" range="{{grades}}" bindchange="onPowerChange">
+          <view class="picker-value {{power}}">{{power || '选择等级'}}</view>
+        </picker>
+      </view>
+      <view class="stat-item">
+        <text>甜味</text>
+        <picker mode="selector" range="{{grades}}" bindchange="onSpeedChange">
+          <view class="picker-value {{speed}}">{{speed || '选择等级'}}</view>
+        </picker>
+      </view>
+      <view class="stat-item">
+        <text>辣味</text>
+        <picker mode="selector" range="{{grades}}" bindchange="onRangeChange">
+          <view class="picker-value {{range}}">{{range || '选择等级'}}</view>
+        </picker>
+      </view>
+      <view class="stat-item">
+        <text>咸味</text>
+        <picker mode="selector" range="{{grades}}" bindchange="onStaminaChange">
+          <view class="picker-value {{stamina}}">{{stamina || '选择等级'}}</view>
+        </picker>
+      </view>
+      <view class="stat-item">
+        <text>麻</text>
+        <picker mode="selector" range="{{grades}}" bindchange="onPrecisionChange">
+          <view class="picker-value {{precision}}">{{precision || '选择等级'}}</view>
+        </picker>
+      </view>
+      <view class="stat-item">
+        <text>接受度</text>
+        <picker mode="selector" range="{{grades}}" bindchange="onPotentialChange">
+          <view class="picker-value {{potential}}">{{potential || '选择等级'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <button form-type="submit" type="primary" class="save-btn">储存我的偏好</button>
+  </form>
+</view>

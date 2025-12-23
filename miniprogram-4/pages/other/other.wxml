@@ -1,0 +1,48 @@
+<view class="container">
+  <view class="header">
+    <text class="title">AI 智能食谱推荐</text>
+    <text class="subtitle">DeepSeek 模型为您定制</text>
+  </view>
+
+  <!-- 按钮区域 -->
+  <view class="btn-group">
+    <button class="meal-btn" bindtap="onGetBreakfast" type="primary" size="mini">🥪 早餐</button>
+    <button class="meal-btn" bindtap="onGetLunch" type="primary" size="mini">🍱 午餐</button>
+    <button class="meal-btn" bindtap="onGetDinner" type="primary" size="mini">🍲 晚餐</button>
+  </view>
+
+  <!-- 加载动画 -->
+  <view wx:if="{{isLoading}}" class="loading-box">
+    <view class="loading-spinner"></view>
+    <text>AI 正在思考中...</text>
+  </view>
+
+  <!-- 结果展示区域 -->
+  <view wx:if="{{resultText && !isLoading}}" class="result-card">
+    
+    <!-- DeepSeek 的回复 -->
+    <view class="ai-message">
+      <view class="ai-avatar">🤖</view>
+      <view class="ai-bubble">
+        <text>{{resultText}}</text>
+      </view>
+    </view>
+
+    <!-- 推荐菜品详情列表 -->
+    <view class="food-list" wx:if="{{foodList.length > 0}}">
+      <view class="list-title">数据匹配详情：</view>
+      <block wx:for="{{foodList}}" wx:key="food_name">
+        <view class="food-item">
+          <view class="food-row">
+            <text class="food-name">{{item.food_name}}</text>
+            <text class="match-score">匹配度: {{item.match_score * 100}}%</text>
+          </view>
+          <!-- 如果有参考评论就显示 -->
+          <view class="food-comment" wx:if="{{item.comment_ref}}">
+            用户评论: "{{item.comment_ref}}"
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+<custom-tab-bar
+    list="{{tabBar.list}}"
+    selectedColor="{{tabBar.selectedColor}}"
+    color="{{tabBar.color}}"
+    left="10"
+    right="10"
+    ></custom-tab-bar>

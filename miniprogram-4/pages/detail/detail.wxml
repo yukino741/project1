@@ -1,0 +1,116 @@
+<!-- detail.wxml -->
+<view class="detail-container">
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="handleBack">
+    <image src="/images/share.png" mode="aspectFit"/>
+  </view>
+
+  <!-- 帖子头部 -->
+  <view class="post-header">
+    <image class="avatar" src="{{post.userInfo.avatarUrl}}"/>
+    <view class="user-info">
+      <text class="nickname">{{post.userInfo.nickName}}</text>
+      <text class="time">{{post.createTime}}</text>
+    </view>
+  </view>
+
+  <!-- 帖子内容 -->
+  <view class="post-content">
+    <view class="food-info">
+      <text class="cantin">{{post.cantin}}</text>
+      <text class="food-name">{{post.foodName}}</text>
+    </view>
+    <text class="content-text">{{post.content}}</text>
+  </view>
+
+  
+  <!-- 口味偏好展示 -->
+    <view class="stands-container" wx:if="{{post.stands}}">
+    <view class="stands-title">口味偏好</view>
+    <view class="stands-list">
+        <block wx:if="{{post.stands.power !== undefined && post.stands.power !== null}}">
+        <view class="stand-item">
+            <text class="stand-label">酸度</text>
+            <text class="stand-value">{{post.stands.power}}</text>
+        </view>
+        </block>
+        <block wx:if="{{post.stands.speed !== undefined && post.stands.speed !== null}}">
+        <view class="stand-item">
+            <text class="stand-label">甜度</text>
+            <text class="stand-value">{{post.stands.speed}}</text>
+        </view>
+        </block>
+        <block wx:if="{{post.stands.range !== undefined && post.stands.range !== null}}">
+        <view class="stand-item">
+            <text class="stand-label">辣度</text>
+            <text class="stand-value">{{post.stands.range}}</text>
+        </view>
+        </block>
+        <block wx:if="{{post.stands.stamina !== undefined && post.stands.stamina !== null}}">
+        <view class="stand-item">
+            <text class="stand-label">咸度</text>
+            <text class="stand-value">{{post.stands.stamina}}</text>
+        </view>
+        </block>
+        <block wx:if="{{post.stands.precision !== undefined && post.stands.precision !== null}}">
+        <view class="stand-item">
+            <text class="stand-label">麻度</text>
+            <text class="stand-value">{{post.stands.precision}}</text>
+        </view>
+        </block>
+        <block wx:if="{{post.stands.potential !== undefined && post.stands.potential !== null}}">
+        <view class="stand-item">
+            <text class="stand-label">接受度</text>
+            <text class="stand-value">{{post.stands.potential}}</text>
+        </view>
+        </block>
+    </view>
+    </view>
+
+  <!-- 图片列表 -->
+  <view class="image-list" wx:if="{{post.images.length > 0}}">
+    <image wx:for="{{post.images}}" 
+           wx:key="*this"
+           src="{{item}}"
+           mode="aspectFill"
+           bindtap="previewImage"
+           data-current="{{item}}"
+           data-urls="{{post.images}}"/>
+  </view>
+
+  <!-- 互动区域 -->
+  <view class="action-bar">
+    <view class="action-item" bindtap="handlePraise">
+      <image src="{{post.isPraised ? '/images/praise-blue.png' : '/images/praise.png'}}"/>
+      <text>{{post.likes.length || 0}}</text>
+    </view>
+    <button class="share-btn" open-type="share">分享</button>
+  </view>
+
+  <!-- 评论区域 -->
+  <view class="comment-section">
+    <view class="comment-header">评论 ({{post.comments.length || 0}})</view>
+    <view class="comment-list">
+      <view class="comment-item" wx:for="{{post.comments}}" wx:key="id">
+        <image class="comment-avatar" src="{{item.userInfo.avatarUrl}}"/>
+        <view class="comment-content">
+          <view class="comment-info">
+            <text class="comment-nickname">{{item.userInfo.nickName}}</text>
+            <text class="comment-time">{{item.createTime}}</text>
+          </view>
+          <text class="comment-text">{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 评论输入区 -->
+  <view class="comment-input-area">
+    <input class="comment-input"
+           value="{{commentContent}}"
+           placeholder="写评论..."
+           focus="{{focus}}"
+           bindinput="handleCommentInput"/>
+    <button class="submit-btn" bindtap="submitComment">发送</button>
+  </view>
+</view>

@@ -1,0 +1,186 @@
+/* pages/creat/creat.wxss */
+/* 整体容器 */
+.create-post {
+    min-height: 100vh;
+    background: #f5f9ff;
+  }
+  
+  /* 顶部导航栏 */
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    z-index: 100;
+  }
+  
+  .nav-left {
+    font-size: 16px;
+    color: #666;
+    padding: 8px;
+  }
+  
+  .nav-title {
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .nav-right {
+    font-size: 16px;
+    color: #ccc;
+    padding: 8px;
+  }
+  
+  .nav-right.active {
+    color: #4a90e2;
+  }
+  
+  /* 输入区域 */
+  .input-area {
+    padding: 54px 15px 20px;
+  }
+  
+  .section {
+    background: white;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+  }
+  
+  .section-title {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  .input-box {
+    width: 100%;
+    height: 24px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* 评价内容区域 */
+  .content-section {
+    background: white;
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .content-input {
+    width: 100%;
+    height: 150px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  .word-count {
+    position: absolute;
+    right: 15px;
+    bottom: 12px;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  /* 图片上传区域 */
+  .upload-section {
+    background: white;
+    border-radius: 8px;
+    padding: 12px 15px;
+  }
+  
+  .image-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .image-item {
+    position: relative;
+    width: calc((100% - 16px) / 3);
+    padding-bottom: calc((100% - 16px) / 3);
+  }
+  
+  .image-item image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  
+  .delete-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .delete-icon {
+    color: white;
+    font-size: 16px;
+    line-height: 1;
+  }
+  
+  .upload-btn {
+    width: calc((100% - 16px) / 3);
+    padding-bottom: calc((100% - 16px) / 3);
+    background: #f5f9ff;
+    border: 1px dashed #4a90e2;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .plus {
+    font-size: 24px;
+    color: #4a90e2;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  
+  .upload-text {
+    font-size: 12px;
+    color: #666;
+    position: absolute;
+    bottom: 8px;
+  }
+  
+  .tip-text {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+  }
+  
+  /* 安全区域 */
+  .safe-bottom {
+    height: env(safe-area-inset-bottom);
+    background: #f5f9ff;
+  }
+  
+  /* 占位符样式 */
+  .input-box::placeholder,
+  .content-input::placeholder {
+    color: #999;
+  }

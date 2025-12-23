@@ -1,0 +1,71 @@
+<view class="create-post">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-left" bindtap="goBack">取消</view>
+    <view class="nav-title">发布点评</view>
+    <view class="nav-right {{canSubmit ? 'active' : ''}}" bindtap="submitPost">发布</view>
+  </view>
+
+  <!-- 填写区域 -->
+  <view class="input-area">
+    <!-- 食堂名称 -->
+    <view class="section">
+      <view class="section-title">食堂名称</view>
+      <input class="input-box" 
+             placeholder="请输入食堂全称，例如教工二层或学生食堂" 
+             value="{{cantin}}"
+             bindinput="onCantinInput"/>
+    </view>
+
+    <!-- 菜品名称 -->
+    <view class="section">
+      <view class="section-title">菜品名称</view>
+      <input class="input-box" 
+             placeholder="请输入菜品名称（必填）" 
+             value="{{foodName}}"
+             bindinput="onFoodInput"/>
+    </view>
+
+    <!-- 评价内容 -->
+    <view class="content-section">
+      <textarea class="content-input" 
+                placeholder="付出一点点，就能改变全世界..." 
+                maxlength="500"
+                value="{{content}}"
+                bindinput="onContentInput"/>
+      <view class="word-count">{{content.length}}/500</view>
+    </view>
+
+    <!-- 图片上传区域 -->
+    <view class="upload-section">
+      <view class="image-list">
+        <block wx:for="{{imageList}}" wx:key="*this">
+          <view class="image-item">
+            <image src="{{item}}" 
+                   mode="aspectFill" 
+                   bindtap="previewImage" 
+                   data-url="{{item}}">
+            </image>
+            <view class="delete-btn" 
+                  bindtap="deleteImage" 
+                  data-index="{{index}}">
+              <text class="delete-icon">×</text>
+            </view>
+          </view>
+        </block>
+        
+        <!-- 添加图片按钮 -->
+        <view class="upload-btn" 
+              bindtap="chooseImage" 
+              wx:if="{{imageList.length < 9}}">
+          <text class="plus">+</text>
+          <text class="upload-text">添加图片</text>
+        </view>
+      </view>
+      <view class="tip-text">最多上传9张图片</view>
+    </view>
+  </view>
+
+  <!-- 底部安全区域 -->
+  <view class="safe-bottom"></view>
+</view>

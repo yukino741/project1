@@ -1,0 +1,93 @@
+<!-- 搜索功能区域 -->
+<view class="search-section">
+  <input 
+    class="search-input" 
+    placeholder="输入菜品名搜索" 
+    placeholder-style="color:#ccc;" 
+    bindinput="handleInput" 
+    value="{{searchKeyword}}"
+  />
+  <view class="search-btn" bindtap="handleSearch">搜索</view>
+</view>
+
+<!-- 下面是您原有的代码，请保持在下方 -->
+<view class="forum-container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <text class="title">食堂点评</text>
+  </view>
+
+  <!-- 帖子列表 -->
+  <scroll-view class="post-list" scroll-y refresher-enabled 
+               bindrefresherrefresh="onRefresh"
+               bindscrolltolower="loadMore">
+    <block wx:for="{{posts}}" wx:key="id">
+      <view class="message">
+        <view class="left">
+          <image src="{{item.author.avatarUrl}}" class="face-img"></image>
+        </view>
+        <view class="right">
+          <!-- 用户昵称 -->
+          <view class="nickname">{{item.author.nickName}}</view>
+          
+          <!-- 食堂和菜品信息 -->
+          <view class="foodkind">
+            <view class="cantin">{{item.cantin}}</view>
+            <view class="food">{{item.foodName}}</view>
+          </view>
+
+          <!-- 帖子内容 -->
+          <view class="content" bindtap="gotoDetail" data-id="{{item.id}}">
+            {{item.content}}
+          </view>
+
+          <!-- 图片展示区 -->
+          <view class="image-grid" wx:if="{{item.images && item.images.length > 0}}">
+            <block wx:for="{{item.images}}" wx:for-item="image" wx:key="*this">
+              <image src="{{image}}" 
+                     class="post-image {{item.images.length === 1 ? 'single' : ''}}"
+                     mode="aspectFill"
+                     bindtap="previewImage"
+                     data-urls="{{item.images}}"
+                     data-current="{{image}}">
+              </image>
+            </block>
+          </view>
+
+          <!-- 时间和删除 -->
+          <view class="time-del">
+            <view class="time">{{item.createTime}}</view>
+            <view class="del" wx:if="{{item.author.id === userInfo.id}}" 
+                  bindtap="deletePost" data-id="{{item.id}}">
+              删除
+            </view>
+          </view>
+
+          <!-- 互动箱 -->
+          <view class="reac-box">
+            <view class="reac-cell" bindtap="handleShare" data-id="{{item.id}}">
+              <image src="/images/share.png" class="reac-img"></image>
+              <view>分享</view>
+              <view class="numShare">{{item.shareCount}}</view>
+            </view>
+            <view class="reac-cell" bindtap="handleComment" data-id="{{item.id}}">
+              <image src="/images/comments.png" class="reac-img"></image>
+              <view>评论</view>
+              <view class="numCom">{{item.commentCount}}</view>
+            </view>
+            <view class="reac-cell" bindtap="handlePraise" data-id="{{item.id}}">
+              <image src="/images/praise.png" class="reac-img" 
+                     style="{{item.isPraised ? 'filter: brightness(0.5);' : ''}}"></image>
+              <view>点赞</view>
+              <view class="numPraise">{{item.praiseCount}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 加载更多提示 -->
+    <view class="loading" wx:if="{{isLoading}}">加载中...</view>
+    <view class="no-more" wx:if="{{!hasMore && !isLoading}}">没有更多内容了</view>
+  </scroll-view>
+</view>

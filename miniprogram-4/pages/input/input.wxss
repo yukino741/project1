@@ -1,0 +1,98 @@
+.container {
+    padding: 20px;
+    background-color: #fff;
+    min-height: 100vh;
+  }
+  
+  .stats-group {
+    background: #8bc3f1;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid white;
+  }
+  
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+  
+  .stat-item text {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .picker-value {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #ffffff;
+    min-width: 100px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  /* 能力值等级样式 */
+  .picker-value.A {
+    background: #ffeb3b;
+    color: #000000;
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+  }
+  
+  .picker-value.B {
+    background: #4caf50;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+  }
+  
+  .picker-value.C {
+    background: #2196f3;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+  }
+  
+  .picker-value.D {
+    background: #9c27b0;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+  }
+  
+  .picker-value.E {
+    background: #f44336;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+  }
+  
+  .picker-value.None {
+    background: #757575;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(117, 117, 117, 0.5);
+  }
+  
+  .save-btn {
+    background: linear-gradient(135deg, #ffeb3b, #ffc107);
+    color: #000000;
+    border: none;
+    border-radius: 25px;
+    margin-top: 30px;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 15px #8bc3f1;
+    transition: transform 0.3s ease;
+  }
+  
+  .save-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px #8bc3f1;
+  }

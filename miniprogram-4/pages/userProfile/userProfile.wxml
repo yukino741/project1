@@ -1,0 +1,41 @@
+<view class="profile-container">
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+    <text class="username">{{userInfo.nickName}}</text>
+  </view>
+
+  <!-- 替身能力展示 -->
+  <view class="stand-card">
+    <view class="hexagon-chart">
+      <!-- 六个能力值 -->
+      <view class="stat-item top">
+        <text class="stat-value {{stand.power}}">{{stand.power}}</text>
+        <text class="stat-label">酸味</text>
+      </view>
+      <view class="stat-item top-right">
+        <text class="stat-value {{stand.speed}}">{{stand.speed}}</text>
+        <text class="stat-label">甜味</text>
+      </view>
+      <view class="stat-item bottom-right">
+        <text class="stat-value {{stand.range}}">{{stand.range}}</text>
+        <text class="stat-label">辣味</text>
+      </view>
+      <view class="stat-item bottom">
+        <text class="stat-value {{stand.stamina}}">{{stand.stamina}}</text>
+        <text class="stat-label">咸味</text>
+      </view>
+      <view class="stat-item bottom-left">
+        <text class="stat-value {{stand.precision}}">{{stand.precision}}</text>
+        <text class="stat-label">麻</text>
+      </view>
+      <view class="stat-item top-left">
+        <text class="stat-value {{stand.potential}}">{{stand.potential}}</text>
+        <text class="stat-label">接受度</text>
+      </view>
+    </view>
+
+    <!-- 修改按钮 -->
+    <view class="edit-btn" bindtap="editStand">修改偏好</view>
+  </view>
+</view>
